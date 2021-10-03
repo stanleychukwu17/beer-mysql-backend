@@ -26,9 +26,7 @@ app.get('/', function (req, res) {
 
         con.query("SELECT * from beers", (err, result) => {
             con.release()
-            console.log(result);
+            res.send(result)
         })
     })
-
-    res.json({'msg':'okay'})
 })

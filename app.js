@@ -19,12 +19,27 @@ const pool = mysql.createPool({
     database : 'nodejs_beers'
 })
 
+
+
+// this is for fetching of all the beers from our beers table
 app.get('/', function (req, res) {
 
     pool.getConnection((err, con) => {
         if (err) { return false }
 
         con.query("SELECT * from beers", (err, result) => {
+            con.release()
+            res.send(result)
+        })
+    })
+})
+
+//fetching the result of just one beer using the id of the beer
+app.get('/:id', (req, res) => {
+    pool.getConnection((err, con) => {
+        if (err) { return false }
+
+        con.query("SELECT * from beers where id = ?", [req.params.id], (err, result) => {
             con.release()
             res.send(result)
         })

@@ -23,7 +23,6 @@ app.get('/', function (req, res) {
 
     pool.getConnection((err, connection) => {
         if (err) {
-            console.log(err)
             return false
         }
         console.log('connected to your mysql db from node, big ups stan!')

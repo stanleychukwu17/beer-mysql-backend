@@ -24,10 +24,11 @@ app.get('/', function (req, res) {
     pool.getConnection((err, con) => {
         if (err) { return false }
 
-        con.query("", (err, result) => {
+        con.query("SELECT * from beers", (err, result) => {
+            con.release()
             console.log(result);
         })
     })
-    console.log('we having connection issues')
+
     res.json({'msg':'okay'})
 })

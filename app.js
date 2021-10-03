@@ -21,10 +21,13 @@ const pool = mysql.createPool({
 
 app.get('/', function (req, res) {
 
-    pool.getConnection((err, connection) => {
+    pool.getConnection((err, con) => {
         if (err) { return false }
 
-        console.log('connected to your mysql db from node, big ups stan!')
+        con.query("", (err, result) => {
+            console.log(result);
+        })
     })
+    console.log('we having connection issues')
     res.json({'msg':'okay'})
 })

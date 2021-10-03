@@ -19,8 +19,6 @@ const pool = mysql.createPool({
     database : 'nodejs_beers'
 })
 
-
-
 // this is for fetching of all the beers from our beers table
 app.get('/', function (req, res) {
 
